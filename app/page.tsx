@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { Check } from "lucide-react"
 
 export default function Page() {
   return (
@@ -137,6 +138,63 @@ export default function Page() {
             height={40}
             className="h-8 w-auto invert"
           />
+        </div>
+      </div>
+      {/* Pricing Section */}
+      <div className="bg-[#1A1A1A] py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-white text-center mb-12">Simple, transparent pricing</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Starter",
+                price: "$99",
+                description: "Perfect for small businesses and startups",
+                features: ["Up to 1,000 transactions/month", "24/7 support", "Basic analytics", "API access"],
+              },
+              {
+                name: "Pro",
+                price: "$299",
+                description: "Ideal for growing businesses",
+                features: [
+                  "Up to 10,000 transactions/month",
+                  "Priority 24/7 support",
+                  "Advanced analytics",
+                  "Customizable API",
+                  "Dedicated account manager",
+                ],
+              },
+              {
+                name: "Enterprise",
+                price: "Custom",
+                description: "For large-scale operations",
+                features: [
+                  "Unlimited transactions",
+                  "White-glove support",
+                  "Custom analytics",
+                  "Fully customizable solution",
+                  "On-premise deployment option",
+                ],
+              },
+            ].map((tier) => (
+              <div key={tier.name} className="bg-[#222222] rounded-lg p-8 flex flex-col">
+                <h3 className="text-2xl font-semibold text-white mb-4">{tier.name}</h3>
+                <div className="text-4xl font-bold text-white mb-4">{tier.price}</div>
+                <p className="text-gray-400 mb-6">{tier.description}</p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  {tier.features.map((feature) => (
+                    <li key={feature} className="flex items-center text-gray-300">
+                      <Check className="h-5 w-5 text-blue-500 mr-2" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                  {tier.name === "Enterprise" ? "Contact Sales" : "Get Started"}
+                </Button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
